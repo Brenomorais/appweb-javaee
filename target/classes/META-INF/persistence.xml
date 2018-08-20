@@ -5,15 +5,15 @@
  
     <persistence-unit name="unit_app" transaction-type="RESOURCE_LOCAL">
         <description>
-            ARQUIVO DE PERSISTÊNCIA JPA E HIBERNATE            
+            ARQUIVO DE PERSISTÊNCIA JPA E HIBERNATE           
         </description>
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
  
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/appweb" />
             <property name="javax.persistence.jdbc.user" value="root" />
-            <property name="javax.persistence.jdbc.password" value="123" />
+            <property name="javax.persistence.jdbc.password" value="blm123" />
  
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
             <property name="hibernate.show_sql" value="true" />
