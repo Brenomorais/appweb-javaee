@@ -66,9 +66,9 @@ public class JPAFilter implements Filter {
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {
-
 		/* CRIA O entityManagerFactory COM OS PARÂMETROS DEFINIDOS NO persistence.xml */
 		this.entityManagerFactory = Persistence.createEntityManagerFactory(this.persistence_unit_name);
+		System.out.println(":: APP Started ::");
 	}
 
 }
