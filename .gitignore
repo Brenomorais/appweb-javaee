@@ -7,11 +7,11 @@
 log/
 target/
 
-# Compiled class file
-*.class
-
 # Log file
 *.log
+
+# Compiled class file
+*.class
 
 # Package Files #
 *.jar
