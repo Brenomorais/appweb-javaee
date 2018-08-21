@@ -1,4 +1,4 @@
-# Projeto Java EE:
+# Projeto Web Java EE:
 
 * JSF 2
 * Primefaces
