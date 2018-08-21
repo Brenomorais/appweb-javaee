@@ -18,15 +18,26 @@
 		<h:form id="form-download-xml">
 		
 		<p:tabView style="width:600px;height:370px;margin:auto;">	 		 	
-	 		<p:tab title="Exportar Cadastro de Pessoa"> 
+	 		<p:tab title="Exportar - XML "> 
 	 		
 	 			<p style="color:skyblue;">Para exportar o cadastro de pessoas no formato XML, clique no botão "Download" abaixo:"</p>
  				
-				<p:commandButton value="Download" ajax="false" icon="ui-icon-arrowthick-1-s" id="commandButton-download"> 
+				<p:commandButton value="Download" ajax="false" icon="ui-icon-arrowthick-1-s" id="commandButton-download-xml"> 
 	        		<p:fileDownload value="#{exportarRegistrosXmlController.arquivoDownload}" /> 
 	    		</p:commandButton>
 	    		 
 	    	</p:tab>
+	    	
+	    	<p:tab title="Exportar - Planilha"> 
+	 		
+	 			<p style="color:skyblue;">Para exportar o cadastro de pessoas no formato de Planilha '.xls' (Excel), clique no botão "Download" abaixo:"</p>
+ 				
+				<p:commandButton value="Download" ajax="false" icon="ui-icon-arrowthick-1-s" id="commandButton-download-excel"> 
+	        		<p:fileDownload value="#{exportarRegistrosExcelController.arquivoDownload}" /> 
+	    		</p:commandButton>
+	    		 
+	    	</p:tab>
+	    	
 	    </p:tabView>
  
 		</h:form> 
