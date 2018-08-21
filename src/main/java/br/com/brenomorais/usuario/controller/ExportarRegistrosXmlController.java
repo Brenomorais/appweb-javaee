@@ -15,6 +15,7 @@ import javax.inject.Named;
  
 import org.jdom.Document;
 import org.jdom.Element;
+import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
@@ -83,8 +84,15 @@ public class ExportarRegistrosXmlController implements Serializable {
  
 			elementPessoas.addContent(elementPessoa);
 		}); 
- 
-		XMLOutputter xmlGerado = new XMLOutputter();
+		
+		//Formata documento: ISO-8859-1 acentuação ficar correta
+		Format format = Format.getCompactFormat().setEncoding("ISO-8859-1");
+		
+		format.setIndent("	");
+		format.setLineSeparator("\n");
+		
+		//Gera XML 
+		XMLOutputter xmlGerado = new XMLOutputter(format);
  
 		try { 
  
