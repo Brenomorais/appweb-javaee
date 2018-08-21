@@ -58,7 +58,7 @@ public class CadastrarPessoaController {
 
 		pessoaModel.setUsuarioModel(this.usuarioController.GetUsuarioSession());
 
-		// INFORMANDO QUE O CADASTRO FOI VIA INPUT
+		// INFORMANDO QUE O CADASTRO FOI VIA INPUT (Formulario da pagina)
 		pessoaModel.setOrigemCadastro("I");
 
 		pessoaRepository.SalvarNovoRegistro(this.pessoaModel);
