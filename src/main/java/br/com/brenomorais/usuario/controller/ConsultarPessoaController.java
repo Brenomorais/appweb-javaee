@@ -18,16 +18,6 @@ public class ConsultarPessoaController implements Serializable {
  
 	private static final long serialVersionUID = 1L;
 	
-	/***
-	 * CARREGA LISTA DE PESSOAS NA INICIALIZAÇÃO 
-	 */
-	
-	@PostConstruct
-	public void init(){ 
-		//RETORNAR AS PESSOAS CADASTRADAS
-		this.pessoas = pessoaRepository.GetPessoas();
-	}
- 
 	@Inject transient
 	private PessoaModel pessoaModel;
  
@@ -36,6 +26,42 @@ public class ConsultarPessoaController implements Serializable {
  
 	@Inject transient
 	private PessoaRepository pessoaRepository;
+	
+	
+	/***
+	 * CARREGA LISTA DE PESSOAS NA INICIALIZAÇÃO 
+	 */
+	
+	@PostConstruct
+	public void init(){ 
+		//RETORNAR AS PESSOAS CADASTRADAS
+		this.pessoas = pessoaRepository.GetPessoas();
+	}	
+	
+	/***
+	 * CARREGA INFORMAÇÕES DE UMA PESSOA PARA SER EDITADA
+	 * @param pessoaModel
+	 */
+	
+	public void Editar(PessoaModel pessoaModel){
+ 
+		/*PEGA APENAS A PRIMEIRA LETRA DO SEXO PARA SETAR NO CAMPO(M OU F)*/
+		pessoaModel.setSexo(pessoaModel.getSexo().substring(0, 1));
+ 
+		this.pessoaModel = pessoaModel;
+ 
+	}
+ 
+	/***
+	 * ATUALIZA O REGISTRO QUE FOI ALTERADO
+	 */
+	
+	public void AlterarRegistro(){ 
+		this.pessoaRepository.AlterarRegistro(this.pessoaModel);	 
+ 
+		/*RECARREGA OS REGISTROS*/
+		this.init();
+	}
  
 	public List<PessoaModel> getPessoas() {
 		return pessoas;
