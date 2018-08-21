@@ -70,16 +70,16 @@
             				<h:outputText value="#{pessoa.usuarioModel.usuario}" />
         				 </p:column>
  
-        				 <p:column headerText="" style="width:25px;"> 
-        				 
+        				 <p:column headerText="" style="width:25px;">         				 
         				 	<p:commandButton icon="ui-icon-pencil" title="Editar Registro" ajax="true"                        					 
                      			actionListener="#{consultarPessoaController.Editar(pessoa)}"
-                        		oncomplete="PF('dialog-modal-editar').show();" update="dialog-modal-editar"/>      				 
-        				 
+                        		oncomplete="PF('dialog-modal-editar').show();" update="dialog-modal-editar"/>        				 
         				 </p:column>
  
         				 <p:column headerText="" style="width:25px;"> 
         				 
+        				 <p:commandButton icon="ui-icon-trash" title="Excluir Registro" ajax="true"
+                     		actionListener="#{consultarPessoaController.ExcluirPessoa(pessoa)}" update="@form" />        				 
         				 </p:column>
  
 			</p:dataTable>
