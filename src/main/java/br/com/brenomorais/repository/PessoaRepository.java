@@ -79,7 +79,7 @@ public class PessoaRepository {
 				pessoaModel.setOrigemCadastro("XML");
 			}
 			else{
-				pessoaModel.setOrigemCadastro("INPUT");
+				pessoaModel.setOrigemCadastro("Site");
 			}
 			if (pessoaEntity.getSexo().equals("M")) {
 				pessoaModel.setSexo("Masculino");
