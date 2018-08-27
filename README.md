@@ -1,4 +1,6 @@
-# Projeto Web Java EE:
+# Projeto Web Java EE
+
+** Dependências Maven:
 
 * JSF 2
 * Primefaces
