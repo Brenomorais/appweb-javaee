@@ -23,9 +23,21 @@
 		   		  width="550px">
  
     		<ui:include src="/sistema/editarPessoa.xhtml"/>    	
+    		
     	</p:dialog>
+    	
+    	
  
-		<h:form style="margin:auto ;margin-left:2%;" id="form-consulta">
+		<h:form style="margin:auto; margin-left:2%;" id="form-consulta">
+		
+			<h:panelGrid columns="3">		 		
+		 			    		
+	    		<p:outputLabel value="Nome" for="nome"/>
+	    		<p:inputText id="nome" size="60" value="#{consultarPessoaController.filtro.nome}" />
+	    		
+	    		<p:commandButton value="Pesquisar" action="#{consultarPessoaController.pesquisar}" update="dataTable-registros" />
+		 		
+			</h:panelGrid>
  
 			<p:dataTable id="dataTable-registros"
 						 var="pessoa" 

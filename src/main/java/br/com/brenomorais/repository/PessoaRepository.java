@@ -12,6 +12,7 @@ import javax.persistence.Query;
 
 import br.com.brenomorais.repository.entity.PessoaEntity;
 import br.com.brenomorais.repository.entity.UsuarioEntity;
+import br.com.brenomorais.repository.filter.PessoaFilter;
 import br.com.brenomorais.repository.model.PessoaModel;
 import br.com.brenomorais.repository.model.UsuarioModel;
 import br.com.brenomorais.uteis.Uteis;
@@ -47,6 +48,67 @@ public class PessoaRepository {
 		pessoaEntity.setUsuarioEntity(usuarioEntity);
 		
 		entityManager.persist(pessoaEntity);
+	}
+	
+	
+	/***
+	 * MÉTODO PARA CONSULTAR A PESSOA POR NOME
+	 * @return
+	 */
+	
+	public List<PessoaModel> filtrados(PessoaFilter filtro){
+		
+		System.out.println("2 >> "+filtro.getNome());
+
+						
+		List<PessoaModel> pessoasModel = new ArrayList<PessoaModel>();
+		
+		entityManager = Uteis.JpaEntityManager();
+		
+		Query query = entityManager.createNamedQuery("PessoaEntity.BuscaNome");
+		
+		query.setParameter("nome", "%" + filtro.getNome() + "%");
+
+		@SuppressWarnings("unchecked")
+		Collection<PessoaEntity> pessoasEntity = (Collection<PessoaEntity>) query.getResultList();
+		
+		PessoaModel pessoaModel = null;
+
+		for (PessoaEntity pessoaEntity : pessoasEntity) {
+
+			pessoaModel = new PessoaModel();
+			pessoaModel.setCodigo(pessoaEntity.getCodigo());
+			pessoaModel.setDataCadastro(pessoaEntity.getDataCadastro());
+			pessoaModel.setEmail(pessoaEntity.getEmail());
+			pessoaModel.setEndereco(pessoaEntity.getEndereco());
+			pessoaModel.setNome(pessoaEntity.getNome());
+
+			if (pessoaEntity.getOrigemCadastro().equals("X")) {
+				pessoaModel.setOrigemCadastro("XML");
+			}
+			else{
+				pessoaModel.setOrigemCadastro("Site");
+			}
+			if (pessoaEntity.getSexo().equals("M")) {
+				pessoaModel.setSexo("Masculino");
+			}
+			else {
+				pessoaModel.setSexo("Feminino");
+			}
+
+			UsuarioEntity usuarioEntity = pessoaEntity.getUsuarioEntity();
+
+			UsuarioModel usuarioModel = new UsuarioModel();
+			usuarioModel.setUsuario(usuarioEntity.getUsuario());
+
+			pessoaModel.setUsuarioModel(usuarioModel);
+			
+			System.out.println(">>> "+pessoaModel.getNome());
+
+			pessoasModel.add(pessoaModel);
+		}
+				
+		return pessoasModel;
 	}
 	
 	

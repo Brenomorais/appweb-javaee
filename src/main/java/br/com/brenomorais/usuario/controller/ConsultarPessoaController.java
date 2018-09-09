@@ -2,7 +2,7 @@ package br.com.brenomorais.usuario.controller;
 
 import java.io.Serializable;
 import java.util.List;
- 
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Produces;
 import javax.faces.view.ViewScoped;
@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.brenomorais.repository.PessoaRepository;
+import br.com.brenomorais.repository.filter.PessoaFilter;
 import br.com.brenomorais.repository.model.PessoaModel;
  
 @Named(value="consultarPessoaController")
@@ -27,6 +28,18 @@ public class ConsultarPessoaController implements Serializable {
 	@Inject transient
 	private PessoaRepository pessoaRepository;
 	
+	private PessoaFilter filtro;
+	
+	private List<PessoaModel> pessoasFiltradas;
+	
+	public void pesquisar() {
+		System.out.println("1 >> "+filtro.getNome());
+		pessoas = pessoaRepository.filtrados(filtro);
+	}
+		
+	public ConsultarPessoaController() {
+		filtro = new PessoaFilter();
+	}
 	
 	/***
 	 * CARREGA LISTA DE PESSOAS NA INICIALIZAÇÃO 
@@ -48,9 +61,10 @@ public class ConsultarPessoaController implements Serializable {
 		/*PEGA APENAS A PRIMEIRA LETRA DO SEXO PARA SETAR NO CAMPO(M OU F)*/
 		pessoaModel.setSexo(pessoaModel.getSexo().substring(0, 1));
  
-		this.pessoaModel = pessoaModel;
- 
-	}
+		this.pessoaModel = pessoaModel; 
+	}	
+	
+	
  
 	/***
 	 * ATUALIZA O REGISTRO QUE FOI ALTERADO
@@ -90,4 +104,10 @@ public class ConsultarPessoaController implements Serializable {
 	public void setPessoaModel(PessoaModel pessoaModel) {
 		this.pessoaModel = pessoaModel;
 	} 
+	public PessoaFilter getFiltro() {
+		return filtro;
+	}
+	public List<PessoaModel> getPessoasFiltradas() {
+		return pessoasFiltradas;
+	}
 }
