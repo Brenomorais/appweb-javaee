@@ -33,7 +33,6 @@ public class ConsultarPessoaController implements Serializable {
 	private List<PessoaModel> pessoasFiltradas;
 	
 	public void pesquisar() {
-		System.out.println("1 >> "+filtro.getNome());
 		pessoas = pessoaRepository.filtrados(filtro);
 	}
 		

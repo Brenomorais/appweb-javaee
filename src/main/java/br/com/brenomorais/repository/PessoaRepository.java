@@ -56,10 +56,7 @@ public class PessoaRepository {
 	 * @return
 	 */
 	
-	public List<PessoaModel> filtrados(PessoaFilter filtro){
-		
-		System.out.println("2 >> "+filtro.getNome());
-
+	public List<PessoaModel> filtrados(PessoaFilter filtro){		
 						
 		List<PessoaModel> pessoasModel = new ArrayList<PessoaModel>();
 		
